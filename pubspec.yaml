@@ -23,6 +23,9 @@ dependencies:
   bloc_test: ^9.1.5
   mocktail: ^1.0.3
 
+  api_client:
+    path: packages/api_client
+
 flutter:
 
   uses-material-design: true
