@@ -27,6 +27,20 @@ class Commit extends Equatable {
         "committer": committer!.toJson(),
       };
 
+  Commit copyWith({
+    String? htmlUrl,
+    String? sha,
+    String? nodeId,
+    Committer? committer,
+  }) {
+    return Commit(
+      htmlUrl: htmlUrl ?? this.htmlUrl,
+      sha: sha ?? this.sha,
+      nodeId: nodeId ?? this.nodeId,
+      committer: committer ?? this.committer,
+    );
+  }
+
   @override
   List<Object?> get props => [
         htmlUrl,
@@ -63,6 +77,20 @@ class Committer extends Equatable {
         "html_url": profileUrl,
       };
 
+  Committer copyWith({
+    int? id,
+    String? login,
+    String? avatarUrl,
+    String? profileUrl,
+  }) {
+    return Committer(
+      id: id ?? this.id,
+      login: login ?? this.login,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      profileUrl: profileUrl ?? this.profileUrl,
+    );
+  }
+
   @override
   List<Object?> get props => [
         id,
@@ -98,6 +126,20 @@ class CommitDetails extends Equatable {
         "message": message,
         "comment_count": commentCount,
       };
+
+  CommitDetails copyWith({
+    Map<String, dynamic>? author,
+    Map<String, dynamic>? committer,
+    String? message,
+    int? commentCount,
+  }) {
+    return CommitDetails(
+      author: author ?? this.author,
+      committer: committer ?? this.committer,
+      message: message ?? this.message,
+      commentCount: commentCount ?? this.commentCount,
+    );
+  }
 
   @override
   List<Object?> get props => [
