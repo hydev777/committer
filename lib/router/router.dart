@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:github_repository/github_repository.dart';
 import 'package:go_router/go_router.dart';
 
-import '../commits/ui/pages/commit-details.dart';
-import '../commits/ui/pages/commits-list.dart';
+import '../commits/ui/pages/commit_details.dart';
+import '../commits/ui/pages/commits_list.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
 final _nestedKey = GlobalKey<NavigatorState>();
@@ -23,11 +24,13 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: '/commits-list',
-          builder: (context, state) => const CommitList(),
+          builder: (context, state) => const CommitListView(),
         ),
         GoRoute(
           path: '/commit-details',
-          builder: (context, state) => const CommitDetails(),
+          builder: (context, state) => CommitDetailsView(
+            url: (state.extra as Commit).htmlUrl,
+          ),
         ),
       ],
     ),

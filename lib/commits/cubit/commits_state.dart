@@ -5,7 +5,7 @@ enum CommitStatus { loading, completed, error, empty }
 class CommitsState extends Equatable {
   const CommitsState({
     this.commitStatus,
-    this.commits,
+    this.commits = const [],
   });
 
   final CommitStatus? commitStatus;

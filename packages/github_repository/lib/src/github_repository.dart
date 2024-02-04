@@ -27,9 +27,7 @@ class GithubRepository {
     http.Response response;
     try {
       response = await _githubApi.fetchCommitsOfRepo(owner, repository);
-    } catch (err, stack) {
-      print("=======> $err");
-      print("++++++++++++++++++>>> $stack");
+    } catch (err) {
       throw HttpException();
     }
 
@@ -45,9 +43,7 @@ class GithubRepository {
             (commit) => Commit.fromJson(commit),
           )
           .toList();
-    } catch (err, stack) {
-      print("==================== $err");
-      print("++++++++++++++++++>>> $stack");
+    } catch (err) {
       throw JsonDecodeException();
     }
   }
