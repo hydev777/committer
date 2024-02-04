@@ -25,7 +25,11 @@ class _CommitListState extends State<CommitList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Commits'),
+      ),
       body: Container(
+        padding: const EdgeInsets.all(16),
         child: BlocBuilder<CommitsCubit, CommitsState>(
           builder: (context, state) {
             if (state.commitStatus == CommitStatus.loading) {
