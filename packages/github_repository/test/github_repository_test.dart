@@ -23,6 +23,12 @@ void main() {
           avatarUrl: 'test',
           login: 'test',
         ),
+        commitDetails: CommitDetails(
+          message: "test",
+          commentCount: 0,
+          author: {"test": "test"},
+          committer: {"test": "test"},
+        ),
         sha: 'test',
         htmlUrl: 'test',
         nodeId: 'test',

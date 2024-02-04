@@ -6,18 +6,21 @@ class Commit extends Equatable {
     this.sha,
     this.nodeId,
     this.committer,
+    this.commitDetails,
   });
 
   final String? htmlUrl;
   final String? sha;
   final String? nodeId;
   final Committer? committer;
+  final CommitDetails? commitDetails;
 
   factory Commit.fromJson(Map<String, dynamic> json) => Commit(
         htmlUrl: json["html_url"] as String,
         sha: json["sha"] as String,
         nodeId: json["node_id"] as String,
         committer: Committer.fromJson(json["committer"]),
+        commitDetails: CommitDetails.fromJson(json["commit"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -25,6 +28,7 @@ class Commit extends Equatable {
         "sha": sha,
         "node_id": nodeId,
         "committer": committer!.toJson(),
+        "commit": commitDetails!.toJson(),
       };
 
   Commit copyWith({
