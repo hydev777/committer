@@ -1,13 +1,19 @@
 name: github_repository
 description: A sample command-line application.
 version: 1.0.0
+publish_to: none
 
 environment:
   sdk: ^3.2.6
 
 dependencies:
   equatable: ^2.0.5
+  http: ^1.2.0
+
+  github_api:
+    path: ../github_api
 
 dev_dependencies:
   lints: ^2.1.0
   test: ^1.25.2
+  mocktail: ^1.0.3
