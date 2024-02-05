@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../cubit/commits_cubit.dart';
+import '../cubit/commits_cubit.dart';
 
 class CommitListView extends StatefulWidget {
   const CommitListView({super.key});

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:github_repository/github_repository.dart';
 import 'package:go_router/go_router.dart';
 
-import '../commits/ui/pages/commit_details.dart';
-import '../commits/ui/pages/commits_list.dart';
+import '../commits/view/commit_details.dart';
+import '../commits/view/commits_list.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
 final _nestedKey = GlobalKey<NavigatorState>();
