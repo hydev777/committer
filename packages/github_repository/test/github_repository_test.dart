@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:github_api/github_api.dart';
 import 'package:github_repository/github_repository.dart';
-import 'package:github_repository/src/models/models.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
