@@ -38,6 +38,8 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
 
     controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..runJavaScript(
+          'window.resizeTo(window.screen.availWidth / 2, window.screen.availHeight / 2);')
       ..loadRequest(Uri.parse(widget.url!));
 
     if (controller.platform is AndroidWebViewController) {
@@ -52,7 +54,16 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              _controller.reload();
+            },
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
+      ),
       body: WebViewWidget(controller: _controller),
     );
   }

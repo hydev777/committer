@@ -29,7 +29,7 @@ final router = GoRouter(
         GoRoute(
           path: '/commit-details',
           builder: (context, state) => CommitDetailsView(
-            url: (state.extra as Commit).htmlUrl,
+            url: (state.extra! as Commit).htmlUrl,
           ),
         ),
       ],
