@@ -1,6 +1,6 @@
 # Committer
 
-A Flutter project about repository commits and more!
+A Flutter project about repository commits!
 
 ## Installation
 
