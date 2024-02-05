@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../cubit/commits_cubit.dart';
 import '../widgets/commit_tile.dart';
@@ -56,8 +57,17 @@ class _CommitListState extends State<CommitListView> {
                     child: ListView.builder(
                       itemCount: state.commits!.length,
                       itemBuilder: (context, index) {
-                        return CommitTile(
-                          commit: state.commits![index],
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+                          duration: const Duration(milliseconds: 300),
+                          child: SlideAnimation(
+                            verticalOffset: 50.0,
+                            child: FadeInAnimation(
+                              child: CommitTile(
+                                commit: state.commits![index],
+                              ),
+                            ),
+                          ),
                         );
                       },
                     ),

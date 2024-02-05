@@ -24,6 +24,7 @@ dependencies:
   webview_flutter: ^4.5.0
   webview_flutter_android: ^3.14.0
   webview_flutter_wkwebview: ^3.11.0
+  flutter_staggered_animations: ^1.1.1
 
   github_repository:
     path: packages/github_repository
