@@ -1,16 +1,8 @@
 # committer
 
-A new Flutter project.
+A Flutter project about repository commits and more!
 
-## Getting Started
+## Installation
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Install FLutter in your computer. Here the link: https://docs.flutter.dev/get-started/install
+- Once installed open the project and select the appropiate device to run. Link: https://docs.flutter.dev/get-started/test-drive
