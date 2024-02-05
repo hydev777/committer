@@ -6,7 +6,7 @@ A Flutter project about repository commits and more!
 
 - Install FLutter in your computer. Here the link: https://docs.flutter.dev/get-started/install
 - Use either Android Studio or Visual Studio code to open the project
-- Select the platform to run the project. It can be Web, Android or IOS. Instructions link: https://docs.flutter.dev/get-started/test-drive
+- Select the platform to run the project. It can Android or IOS. Instructions link: https://docs.flutter.dev/get-started/test-drive
 
 ## Running Tests
 
