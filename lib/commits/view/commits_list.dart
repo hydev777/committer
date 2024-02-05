@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../cubit/commits_cubit.dart';
+import '../widgets/commit_tile.dart';
 
 class CommitListView extends StatefulWidget {
   const CommitListView({super.key});
@@ -56,28 +56,8 @@ class _CommitListState extends State<CommitListView> {
                     child: ListView.builder(
                       itemCount: state.commits!.length,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          onTap: () {
-                            context.push('/commit-details',
-                                extra: state.commits![index]);
-                          },
-                          leading: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: NetworkImage(state
-                                    .commits![index].committer!.avatarUrl!),
-                              ),
-                            ),
-                          ),
-                          title: Text(
-                            state.commits![index].commitDetails!.message!,
-                            style: const TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          subtitle: Text(state.commits![index].commitDetails!
-                              .committer!["name"]),
+                        return CommitTile(
+                          commit: state.commits![index],
                         );
                       },
                     ),

@@ -54,36 +54,6 @@ void main() {
       ],
     );
 
-    // blocTest<CommitsCubit, CommitsState>(
-    //   "meal list is empty",
-    //   build: () {
-    //     when(
-    //       () => githubRepository.fetchListOfCommitsInRepo(
-    //         'hydev777',
-    //         'committer',
-    //       ),
-    //     ).thenAnswer(
-    //       (_) async => const [],
-    //     );
-
-    //     return CommitsCubit(
-    //       githubRepository: githubRepository,
-    //     );
-    //   },
-    //   act: (cubit) => cubit.onFetchRepositoryCommits(
-    //     'hydev777',
-    //     'committer',
-    //   ),
-    //   expect: () => [
-    //     const CommitsState(
-    //       commitStatus: CommitStatus.loading,
-    //     ),
-    //     const CommitsState(
-    //       commitStatus: CommitStatus.empty,
-    //     )
-    //   ],
-    // );
-
     blocTest<CommitsCubit, CommitsState>(
       "commit list is complete",
       build: () {

@@ -22,6 +22,8 @@ dependencies:
   bloc_test: ^9.1.5
   mocktail: ^1.0.3
   webview_flutter: ^4.5.0
+  webview_flutter_android: ^3.14.0
+  webview_flutter_wkwebview: ^3.11.0
 
   github_repository:
     path: packages/github_repository

@@ -38,7 +38,6 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
 
     controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(const Color(0x00000000))
       ..loadRequest(Uri.parse(widget.url!));
 
     if (controller.platform is AndroidWebViewController) {
