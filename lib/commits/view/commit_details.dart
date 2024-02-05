@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
@@ -57,6 +57,8 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
   }
 
   void initializeWebViewInWeb() {
+    // Webview is not suported for some websites for secutiry purposes
+
     webview = const Center(
       child: Text("Webview is not supported on web"),
     );
@@ -65,6 +67,8 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
   @override
   void initState() {
     super.initState();
+
+    // Initialize depending if is web or mobile
 
     if (kIsWeb) {
       initializeWebViewInWeb();
