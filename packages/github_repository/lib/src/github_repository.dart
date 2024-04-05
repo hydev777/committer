@@ -35,6 +35,7 @@ class GithubRepository {
     try {
       response = await _httpClient.get(commitsUrl);
     } catch (err) {
+      print(err);
       throw HttpException();
     }
 

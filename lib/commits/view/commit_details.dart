@@ -29,7 +29,7 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
   }
 
   void initializeWebview() {
-    late final PlatformWebViewControllerCreationParams params;
+    final PlatformWebViewControllerCreationParams params;
     if (WebViewPlatform.instance is WebKitWebViewPlatform) {
       params = WebKitWebViewControllerCreationParams(
         allowsInlineMediaPlayback: true,
@@ -61,7 +61,6 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
   @override
   void initState() {
     super.initState();
-
     initializeWebview();
   }
 
@@ -78,15 +77,13 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
           ),
         ],
       ),
-      body: kIsWeb
+      body: isLoading
           ? const Center(
-              child: Text("Webview is not supported on web"),
+              child: CircularProgressIndicator(
+                color: Colors.black,
+              ),
             )
-          : isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : webview,
+          : webview,
     );
   }
 }

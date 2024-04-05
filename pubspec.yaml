@@ -29,9 +29,6 @@ dependencies:
   github_repository:
     path: packages/github_repository
 
-  github_api:
-    path: packages/github_api
-
 flutter:
 
   uses-material-design: true
