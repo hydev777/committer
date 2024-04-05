@@ -52,10 +52,6 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
     }
 
     webview = WebViewWidget(controller: _controller);
-
-    setState(() {
-      isLoading = false;
-    });
   }
 
   @override
@@ -77,13 +73,7 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
           ),
         ],
       ),
-      body: isLoading
-          ? const Center(
-              child: CircularProgressIndicator(
-                color: Colors.black,
-              ),
-            )
-          : webview,
+      body: webview,
     );
   }
 }
