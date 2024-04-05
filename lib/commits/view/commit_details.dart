@@ -17,9 +17,10 @@ class CommitDetailsView extends StatefulWidget {
 }
 
 class _CommitDetailsViewState extends State<CommitDetailsView> {
-  var webview;
+  late WebViewWidget webview;
   final GlobalKey webViewKey = GlobalKey();
   late final WebViewController _controller;
+  bool isLoading = true;
 
   Future<void> reloadPage() async {
     if (!kIsWeb) {
@@ -38,43 +39,30 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
       params = const PlatformWebViewControllerCreationParams();
     }
 
-    final WebViewController controller =
-        WebViewController.fromPlatformCreationParams(params);
+    _controller = WebViewController.fromPlatformCreationParams(params);
 
-    controller
+    _controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(Uri.parse(widget.url!));
 
-    if (controller.platform is AndroidWebViewController) {
+    if (_controller.platform is AndroidWebViewController) {
       AndroidWebViewController.enableDebugging(true);
-      (controller.platform as AndroidWebViewController)
+      (_controller.platform as AndroidWebViewController)
           .setMediaPlaybackRequiresUserGesture(false);
     }
 
-    _controller = controller;
-
     webview = WebViewWidget(controller: _controller);
-  }
 
-  void initializeWebViewInWeb() {
-    // Webview is not suported for some websites for secutiry purposes
-
-    webview = const Center(
-      child: Text("Webview is not supported on web"),
-    );
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
   void initState() {
     super.initState();
 
-    // Initialize depending if is web or mobile
-
-    if (kIsWeb) {
-      initializeWebViewInWeb();
-    } else {
-      initializeWebview();
-    }
+    initializeWebview();
   }
 
   @override
@@ -90,7 +78,15 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
           ),
         ],
       ),
-      body: webview,
+      body: kIsWeb
+          ? const Center(
+              child: Text("Webview is not supported on web"),
+            )
+          : isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : webview,
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:github_api/github_api.dart';
 import 'package:http/http.dart' as http;
 
 import 'models/commit.dart';
@@ -17,16 +16,24 @@ class HttpRequestFailure implements Exception {
 
 class GithubRepository {
   GithubRepository({
-    required GithubApi githubApi,
-  }) : _githubApi = githubApi;
+    required String baseUrl,
+    required http.Client httpClient,
+  })  : _baseUrl = Uri.parse(baseUrl),
+        _httpClient = httpClient;
 
-  final GithubApi _githubApi;
+  final Uri? _baseUrl;
+  final http.Client _httpClient;
 
   Future<List<Commit>> fetchListOfCommitsInRepo(
-      String owner, String repository) async {
+    String owner,
+    String repository,
+  ) async {
     http.Response response;
+    Uri commitsUrl = _baseUrl!.replace(
+      path: "/repos/$owner/$repository/commits",
+    );
     try {
-      response = await _githubApi.fetchCommitsOfRepo(owner, repository);
+      response = await _httpClient.get(commitsUrl);
     } catch (err) {
       throw HttpException();
     }

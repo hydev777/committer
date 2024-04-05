@@ -17,11 +17,9 @@ class _CommitListState extends State<CommitListView> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await context
-          .read<CommitsCubit>()
-          .onFetchRepositoryCommits('hydev777', 'committer');
-    });
+    context
+        .read<CommitsCubit>()
+        .onFetchRepositoryCommits('hydev777', 'committer');
   }
 
   @override
@@ -31,8 +29,8 @@ class _CommitListState extends State<CommitListView> {
         title: const Text('Commits'),
         actions: [
           IconButton(
-            onPressed: () async {
-              await context
+            onPressed: () {
+              context
                   .read<CommitsCubit>()
                   .onFetchRepositoryCommits('hydev777', 'committer');
             },
@@ -51,28 +49,22 @@ class _CommitListState extends State<CommitListView> {
             }
 
             if (state.commitStatus == CommitStatus.completed) {
-              return Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: state.commits!.length,
-                      itemBuilder: (context, index) {
-                        return AnimationConfiguration.staggeredList(
-                          position: index,
-                          duration: const Duration(milliseconds: 300),
-                          child: SlideAnimation(
-                            verticalOffset: 50.0,
-                            child: FadeInAnimation(
-                              child: CommitTile(
-                                commit: state.commits![index],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
+              return ListView.builder(
+                itemCount: state.commits!.length,
+                itemBuilder: (context, index) {
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 300),
+                    child: SlideAnimation(
+                      verticalOffset: 50.0,
+                      child: FadeInAnimation(
+                        child: CommitTile(
+                          commit: state.commits![index],
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  );
+                },
               );
             }
 
