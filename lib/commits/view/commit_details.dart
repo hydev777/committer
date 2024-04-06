@@ -19,10 +19,6 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
   final GlobalKey webViewKey = GlobalKey();
   late final WebViewController _controller;
 
-  void reloadPage() async {
-    _controller.reload();
-  }
-
   void initializeWebviewController() {
     final PlatformWebViewControllerCreationParams params;
     if (WebViewPlatform.instance is WebKitWebViewPlatform) {
@@ -60,7 +56,7 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
         actions: [
           IconButton(
             onPressed: () async {
-              reloadPage();
+              _controller.reload();
             },
             icon: const Icon(Icons.refresh),
           ),
