@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
@@ -17,15 +16,12 @@ class CommitDetailsView extends StatefulWidget {
 }
 
 class _CommitDetailsViewState extends State<CommitDetailsView> {
-  late WebViewWidget webview;
   final GlobalKey webViewKey = GlobalKey();
   late final WebViewController _controller;
   bool isLoading = true;
 
   Future<void> reloadPage() async {
-    if (!kIsWeb) {
-      _controller.reload();
-    }
+    _controller.reload();
   }
 
   void initializeWebview() {
@@ -50,8 +46,6 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
       (_controller.platform as AndroidWebViewController)
           .setMediaPlaybackRequiresUserGesture(false);
     }
-
-    webview = WebViewWidget(controller: _controller);
   }
 
   @override
@@ -73,7 +67,7 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
           ),
         ],
       ),
-      body: webview,
+      body: WebViewWidget(controller: _controller),
     );
   }
 }

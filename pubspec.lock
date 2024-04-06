@@ -163,13 +163,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
-  github_api:
-    dependency: "direct main"
-    description:
-      path: "packages/github_api"
-      relative: true
-    source: path
-    version: "1.0.0"
   github_repository:
     dependency: "direct main"
     description:

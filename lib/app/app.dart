@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_repository/github_repository.dart';
 
 import '../commits/cubit/commits_cubit.dart';
-import '../router/router.dart';
+import '../router.dart';
 
 class App extends StatelessWidget {
   const App({
