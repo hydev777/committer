@@ -16,7 +16,6 @@ class CommitDetailsView extends StatefulWidget {
 }
 
 class _CommitDetailsViewState extends State<CommitDetailsView> {
-  final GlobalKey webViewKey = GlobalKey();
   late final WebViewController _controller;
 
   void initializeWebviewController() {
