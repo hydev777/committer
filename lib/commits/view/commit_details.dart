@@ -18,13 +18,12 @@ class CommitDetailsView extends StatefulWidget {
 class _CommitDetailsViewState extends State<CommitDetailsView> {
   final GlobalKey webViewKey = GlobalKey();
   late final WebViewController _controller;
-  bool isLoading = true;
 
-  Future<void> reloadPage() async {
+  void reloadPage() async {
     _controller.reload();
   }
 
-  void initializeWebview() {
+  void initializeWebviewController() {
     final PlatformWebViewControllerCreationParams params;
     if (WebViewPlatform.instance is WebKitWebViewPlatform) {
       params = WebKitWebViewControllerCreationParams(
@@ -51,7 +50,7 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
   @override
   void initState() {
     super.initState();
-    initializeWebview();
+    initializeWebviewController();
   }
 
   @override
@@ -61,7 +60,7 @@ class _CommitDetailsViewState extends State<CommitDetailsView> {
         actions: [
           IconButton(
             onPressed: () async {
-              await reloadPage();
+              reloadPage();
             },
             icon: const Icon(Icons.refresh),
           ),
