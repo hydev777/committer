@@ -22,15 +22,15 @@ class CommitTile extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: NetworkImage(commit.committer!.avatarUrl!),
+            image: NetworkImage(commit.committer.avatarUrl),
           ),
         ),
       ),
       title: Text(
-        commit.commitDetails!.message!,
+        commit.commitDetails.message,
         style: const TextStyle(fontWeight: FontWeight.w600),
       ),
-      subtitle: Text(commit.commitDetails!.committer!["name"]),
+      subtitle: Text(commit.commitDetails.committer["name"]),
     );
   }
 }

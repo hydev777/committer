@@ -2,18 +2,18 @@ import 'package:equatable/equatable.dart';
 
 class Commit extends Equatable {
   const Commit({
-    this.htmlUrl,
-    this.sha,
-    this.nodeId,
-    this.committer,
-    this.commitDetails,
+    required this.htmlUrl,
+    required this.sha,
+    required this.nodeId,
+    required this.committer,
+    required this.commitDetails,
   });
 
-  final String? htmlUrl;
-  final String? sha;
-  final String? nodeId;
-  final Committer? committer;
-  final CommitDetails? commitDetails;
+  final String htmlUrl;
+  final String sha;
+  final String nodeId;
+  final Committer committer;
+  final CommitDetails commitDetails;
 
   factory Commit.fromJson(Map<String, dynamic> json) => Commit(
         htmlUrl: json["html_url"] as String,
@@ -27,8 +27,8 @@ class Commit extends Equatable {
         "html_url": htmlUrl,
         "sha": sha,
         "node_id": nodeId,
-        "committer": committer!.toJson(),
-        "commit": commitDetails!.toJson(),
+        "committer": committer.toJson(),
+        "commit": commitDetails.toJson(),
       };
 
   Commit copyWith({
@@ -36,12 +36,14 @@ class Commit extends Equatable {
     String? sha,
     String? nodeId,
     Committer? committer,
+    CommitDetails? commitDetails,
   }) {
     return Commit(
       htmlUrl: htmlUrl ?? this.htmlUrl,
       sha: sha ?? this.sha,
       nodeId: nodeId ?? this.nodeId,
       committer: committer ?? this.committer,
+      commitDetails: commitDetails ?? this.commitDetails,
     );
   }
 
@@ -51,21 +53,22 @@ class Commit extends Equatable {
         sha,
         nodeId,
         committer,
+        commitDetails,
       ];
 }
 
 class Committer extends Equatable {
   const Committer({
-    this.id,
-    this.login,
-    this.avatarUrl,
-    this.profileUrl,
+    required this.id,
+    required this.login,
+    required this.avatarUrl,
+    required this.profileUrl,
   });
 
-  final int? id;
-  final String? login;
-  final String? avatarUrl;
-  final String? profileUrl; // html_url
+  final int id;
+  final String login;
+  final String avatarUrl;
+  final String profileUrl; // html_url
 
   factory Committer.fromJson(Map<String, dynamic> json) => Committer(
         id: json["id"] as int,
@@ -106,16 +109,16 @@ class Committer extends Equatable {
 
 class CommitDetails extends Equatable {
   const CommitDetails({
-    this.author,
-    this.committer,
-    this.message,
-    this.commentCount,
+    required this.author,
+    required this.committer,
+    required this.message,
+    required this.commentCount,
   });
 
-  final Map<String, dynamic>? author;
-  final Map<String, dynamic>? committer;
-  final String? message;
-  final int? commentCount;
+  final Map<String, dynamic> author;
+  final Map<String, dynamic> committer;
+  final String message;
+  final int commentCount;
 
   factory CommitDetails.fromJson(Map<String, dynamic> json) => CommitDetails(
         author: json["author"] as Map<String, dynamic>,
