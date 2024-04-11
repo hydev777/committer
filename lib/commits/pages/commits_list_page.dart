@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:github_repository/github_repository.dart';
 
 import '../cubit/commits_cubit.dart';
 import '../widgets/commit_tile.dart';
+
+class CommitListPage extends StatelessWidget {
+  const CommitListPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => CommitsCubit(
+        githubRepository: RepositoryProvider.of<GithubRepository>(context),
+      ),
+      child: const CommitListView(),
+    );
+  }
+}
 
 class CommitListView extends StatefulWidget {
   const CommitListView({super.key});

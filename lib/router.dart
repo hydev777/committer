@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:github_repository/github_repository.dart';
 import 'package:go_router/go_router.dart';
 
-import '../commits/view/commit_details.dart';
-import '../commits/view/commits_list.dart';
+import 'commits/pages/commit_details.dart';
+import 'commits/pages/commits_list_page.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
 
@@ -12,7 +12,7 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/commits-list',
-      builder: (context, state) => const CommitListView(),
+      builder: (context, state) => const CommitListPage(),
     ),
     GoRoute(
       path: '/commit-details',
